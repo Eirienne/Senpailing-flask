@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <script src="../Javascript/color.js"></script> -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <title>Senpailing</title>
+</head>
+<body style="text-align: center;">
+    <h1>Sandpiling Deloading...</h1>
+    <h2>
+        <p>Row : {{ row }} || Col : {{ col }} || First Pile : {{ pile }}</p>
+    </h2>
+    <p>Your senpailing</p>
+    <center>
+        <!-- <input type="button" value="Change color" onclick="changeColor()"> -->
+        <p>
+            || <span style="color:#FF0000"> &spades; </span> = 0 || 
+            <span style="color: blue"> &clubs; </span> = 1 || 
+            <span style="color: yellow"> &hearts; </span> = 2 ||
+            <span style="color: green"> &diams; </span> = 3 || 
+        </p>
+        <table id="table">
+            {% for item in grid %}
+            <tr>
+                {% for d in item %}
+                <td id="number">
+                    {{ d }}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+
+<script type="text/javascript">
+  $(document).ready(function changeColor() {
+        // var number = document.getElementById('number');
+
+        // number.innerHTML.replace('0','1');
+        // number.innerHTML.replace('<span style="color: red;">3</span>');
+
+    var table = document.getElementById('table'),
+    cells = table.getElementsByTagName('td');
+
+    for (var i=0,len=cells.length; i<len; i++){
+        cells[i].onmousemove = function(){
+
+            var number = this.innerHTML;
+
+            if (number == 0){
+                this.innerHTML = '<span style="color:#FF0000"> &spades; </span>'
+                // number.innerHTML.replace('<span style="color: red;">0</span>');
+            }
+            if (number == 1){
+                this.innerHTML = '<span style="color: blue"> &clubs; </span>'
+                // number.innerHTML.replace('<span style="color: red;">0</span>');
+            }
+            if (number == 2){
+                this.innerHTML = '<span style="color: yellow"> &hearts; </span>'
+                // number.innerHTML.replace('<span style="color: red;">0</span>');
+            }
+            if (number == 3){
+                this.innerHTML = '<span style="color: green"> &diams; </span>'
+                // number.innerHTML.replace('<span style="color: red;">0</span>');
+            }
+            console.log(this.innerHTML);
+            /* if you know it's going to be numeric:
+            console.log(parseInt(this.innerHTML),10);
+            */
+            }
+        }
+    });
+</script>
+</html>
